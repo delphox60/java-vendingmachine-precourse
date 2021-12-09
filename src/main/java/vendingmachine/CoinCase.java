@@ -16,6 +16,10 @@ public class CoinCase {
         }
     }
 
+    public int getHolingCoinUnits(String coinUnit) {
+        return quantityOfCoins.get(coinUnit);
+    }
+
     private void randomlyGenerateCoin(final int needAmount) {
         Coin pickedCoin;
         do {
