@@ -9,13 +9,13 @@ import java.util.stream.Stream;
 
 public class MenuValidator {
 
-    private final static String DROPPED_INFO_ERROR_MESSAGE = "[ERROR] 누락된 정보가 있습니다. 상품명, 가격, 수량을 확인해 주세요.";
-    private final static String INVALID_MENU_NAME_ERROR_MESSAGE = "[ERROR] 상품명은 한글, 숫자, 영문으로만 이루어진 이름이어야 합니다.";
-    private final static Pattern MENU_FORMAT_PATTERN = Pattern.compile("^\\[(.*),(.*),(.*)\\]$");
-    private final static Pattern MENU_NAME_PATTERN = Pattern.compile("^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]+$");
-    private final static int MENU_NAME_GROUP_INDEX = 1;
-    private final static int MENU_PRICE_GROUP_INDEX = 2;
-    private final static int MENU_STOCK_GROUP_INDEX = 3;
+    private static final String DROPPED_INFO_ERROR_MESSAGE = "[ERROR] 누락된 정보가 있습니다. 상품명, 가격, 수량을 확인해 주세요.";
+    private static final String INVALID_MENU_NAME_ERROR_MESSAGE = "[ERROR] 상품명은 한글, 숫자, 영문으로만 이루어진 이름이어야 합니다.";
+    private static final Pattern MENU_FORMAT_PATTERN = Pattern.compile("^\\[(.*),(.*),(.*)\\]$");
+    private static final Pattern MENU_NAME_PATTERN = Pattern.compile("^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]+$");
+    private static final int MENU_NAME_GROUP_INDEX = 1;
+    private static final int MENU_PRICE_GROUP_INDEX = 2;
+    private static final int MENU_STOCK_GROUP_INDEX = 3;
 
     private MenuValidator() {
     }
