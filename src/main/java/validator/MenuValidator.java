@@ -36,11 +36,12 @@ public class MenuValidator {
         validateMenuStock(menuFormatMatcher.group(MENU_STOCK_GROUP_INDEX));
     }
 
-    private static void validateMenuName(String menuName) {
-        if (menuName.length() == 0) {
-            System.out.println();
-            throw new IllegalArgumentException();
-        }
+    private static void validateMenuName(final String menuName) {
+        GeneralValidator.validateBeingDropped(menuName, DROPPED_INFO_ERROR_MESSAGE);
+        validateMenuNameValidity(menuName);
+    }
+
+    private static void validateMenuNameValidity(String menuName) {
         Matcher menuNameMatcher = MENU_NAME_PATTERN.matcher(menuName);
         if (!menuNameMatcher.matches()) {
             System.out.println(INVALID_MENU_NAME_ERROR_MESSAGE);
