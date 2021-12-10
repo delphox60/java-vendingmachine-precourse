@@ -1,11 +1,11 @@
 package vendingmachine;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
-
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInListTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -36,6 +36,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     protected void runMain() {
-        Application.main(new String[] {});
+        Application.main(new String[]{});
     }
 }
