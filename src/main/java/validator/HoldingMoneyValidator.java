@@ -9,8 +9,8 @@ public class HoldingMoneyValidator {
     private HoldingMoneyValidator() {
     }
 
-    public static int validateHoldingMoney(final String inputValue) {
-        int intInputValue = GeneralValidator.validateInteger(inputValue, NOT_A_NUMBER_ERROR_MESSAGE);
+    public static int getValidHoldingMoney(final String inputValue) {
+        int intInputValue = GeneralValidator.getValidInteger(inputValue, NOT_A_NUMBER_ERROR_MESSAGE);
         GeneralValidator.validatePositiveNumber(intInputValue, NOT_A_POSITIVE_NUMBER_ERROR_MESSAGE);
         GeneralValidator.validateDivisibleByTen(intInputValue, NOT_DIVISIBLE_BY_TEN_ERROR_MESSAGE);
         return intInputValue;

@@ -24,7 +24,7 @@ public class VendingMachine {
         String menuInput = Console.readLine();
         List<String> menuInputList;
         try {
-            menuInputList = MenuValidator.validateMenu(menuInput);
+            menuInputList = MenuValidator.getValidMenu(menuInput);
         } catch (IllegalArgumentException e) {
             menuInputList = getInputMenu();
         }
@@ -36,7 +36,7 @@ public class VendingMachine {
         String inputValue = Console.readLine();
         int holdingMoney;
         try {
-            holdingMoney = HoldingMoneyValidator.validateHoldingMoney(inputValue);
+            holdingMoney = HoldingMoneyValidator.getValidHoldingMoney(inputValue);
         } catch (IllegalArgumentException e) {
             holdingMoney = getInputHoldingMoney();
         }

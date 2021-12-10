@@ -7,7 +7,7 @@ public class GeneralValidator {
     private GeneralValidator() {
     }
 
-    public static int validateInteger(final String inputValue, final String errorMessage) {
+    public static int getValidInteger(final String inputValue, final String errorMessage) {
         int intInputValue;
         try {
             intInputValue = Integer.parseInt(inputValue);

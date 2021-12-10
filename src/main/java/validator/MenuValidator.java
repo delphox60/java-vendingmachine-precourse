@@ -20,7 +20,7 @@ public class MenuValidator {
     private MenuValidator() {
     }
 
-    public static List<String> validateMenu(final String menuInput) {
+    public static List<String> getValidMenu(final String menuInput) {
         Stream<String> menuStream = Arrays.stream(menuInput.split(";"));
         menuStream.forEach(MenuValidator::validateMenuFormat);
         return menuStream.collect(Collectors.toList());
