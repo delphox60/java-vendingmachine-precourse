@@ -11,7 +11,7 @@ public class HoldingMoneyValidator {
 
     public static int getValidHoldingMoney(final String inputValue) {
         int intInputValue = GeneralValidator.getValidInteger(inputValue, NOT_A_NUMBER_ERROR_MESSAGE);
-        GeneralValidator.validatePositiveNumber(intInputValue, NOT_A_POSITIVE_NUMBER_ERROR_MESSAGE);
+        GeneralValidator.validateNonNegativeNumber(intInputValue, NOT_A_POSITIVE_NUMBER_ERROR_MESSAGE);
         GeneralValidator.validateDivisibleByTen(intInputValue, NOT_DIVISIBLE_BY_TEN_ERROR_MESSAGE);
         return intInputValue;
     }

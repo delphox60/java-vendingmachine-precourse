@@ -18,7 +18,7 @@ public class GeneralValidator {
         return intInputValue;
     }
 
-    public static void validatePositiveNumber(final int inputValue, final String errorMessage) {
+    public static void validateNonNegativeNumber(final int inputValue, final String errorMessage) {
         if (inputValue < 0) {
             System.out.println(errorMessage);
             throw new IllegalArgumentException();

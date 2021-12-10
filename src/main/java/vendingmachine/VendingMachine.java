@@ -17,6 +17,7 @@ public class VendingMachine {
 
     public void execute() {
         printOutHoldingCoins();
+        List<String> MenuList = getInputMenu();
     }
 
     private List<String> getInputMenu() {
