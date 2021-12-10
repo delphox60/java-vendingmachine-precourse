@@ -6,30 +6,37 @@ import camp.nextstep.edu.missionutils.Console;
 import constant.CoinInfo;
 import constant.ConsoleMessage;
 import validator.HoldingMoneyValidator;
-import validator.MenuValidator;
+import validator.ProductValidator;
 
 public class VendingMachine {
     private CoinCase coinCase;
+    private Storage storage;
 
     public VendingMachine() {
         coinCase = new CoinCase(getInputHoldingMoney());
+        storage = new Storage();
     }
 
     public void execute() {
         printOutHoldingCoins();
-        List<String> MenuList = getInputMenu();
+        initializeProducts();
     }
 
-    private List<String> getInputMenu() {
-        System.out.println(ConsoleMessage.MENU_INPUT_REQUEST_MESSAGE);
-        String menuInput = Console.readLine();
-        List<String> menuInputList;
+    private void initializeProducts() {
+        List<Product> productList = getProductList();
+        productList.forEach(product -> storage.putProduct(product));
+    }
+
+    private List<Product> getProductList() {
+        System.out.println(ConsoleMessage.PRODUCT_INFOS_INPUT_REQUEST_MESSAGE);
+        String inputProductsInfo = Console.readLine();
+        List<Product> productList;
         try {
-            menuInputList = MenuValidator.getValidMenu(menuInput);
+            productList = ProductValidator.getValidProductList(inputProductsInfo);
         } catch (IllegalArgumentException e) {
-            menuInputList = getInputMenu();
+            productList = getProductList();
         }
-        return menuInputList;
+        return productList;
     }
 
     private int getInputHoldingMoney() {
