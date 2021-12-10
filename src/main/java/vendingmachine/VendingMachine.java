@@ -1,29 +1,45 @@
 package vendingmachine;
 
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 import constant.CoinInfo;
 import constant.ConsoleMessage;
 import validator.HoldingMoneyValidator;
+import validator.MenuValidator;
 
 public class VendingMachine {
     private CoinCase coinCase;
 
     public VendingMachine() {
-        coinCase = new CoinCase(inputHoldingMoney());
+        coinCase = new CoinCase(getInputHoldingMoney());
     }
 
     public void execute() {
         printOutHoldingCoins();
+
     }
 
-    private int inputHoldingMoney() {
+    private List<String> getInputMenu() {
+        System.out.println(ConsoleMessage.MENU_INPUT_REQUEST_MESSAGE);
+        String menuInput = Console.readLine();
+        List<String> menuInputList;
+        try {
+            menuInputList = MenuValidator.validateMenu(menuInput);
+        } catch (IllegalArgumentException e) {
+            menuInputList = getInputMenu();
+        }
+        return menuInputList;
+    }
+
+    private int getInputHoldingMoney() {
         System.out.println(ConsoleMessage.HOLDING_MONEY_INPUT_REQUEST_MESSAGE);
         String inputValue = Console.readLine();
         int holdingMoney;
         try {
             holdingMoney = HoldingMoneyValidator.validateHoldingMoney(inputValue);
         } catch (IllegalArgumentException e) {
-            holdingMoney = inputHoldingMoney();
+            holdingMoney = getInputHoldingMoney();
         }
         return holdingMoney;
     }
