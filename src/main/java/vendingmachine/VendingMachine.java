@@ -17,7 +17,6 @@ public class VendingMachine {
 
     public void execute() {
         printOutHoldingCoins();
-
     }
 
     private List<String> getInputMenu() {
