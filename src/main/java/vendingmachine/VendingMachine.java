@@ -13,7 +13,7 @@ public class VendingMachine {
     private Storage storage;
 
     public VendingMachine() {
-        coinCase = new CoinCase(getInputHoldingMoney());
+        coinCase = new CoinCase(inputHoldingMoney());
         storage = new Storage();
     }
 
@@ -23,43 +23,43 @@ public class VendingMachine {
     }
 
     private void initializeProducts() {
-        List<Product> productList = getProductList();
+        List<Product> productList = inputProductList();
         productList.forEach(product -> storage.putProduct(product));
     }
 
-    private List<Product> getProductList() {
+    private List<Product> inputProductList() {
         System.out.println(ConsoleMessage.PRODUCT_INFOS_INPUT_REQUEST_MESSAGE);
         String inputProductsInfo = Console.readLine();
         List<Product> productList;
         try {
             productList = ProductValidator.getValidProductList(inputProductsInfo);
         } catch (IllegalArgumentException e) {
-            productList = getProductList();
+            productList = inputProductList();
         }
         return productList;
     }
 
-    private int getInputHoldingMoney() {
+    private int inputHoldingMoney() {
         System.out.println(ConsoleMessage.HOLDING_MONEY_INPUT_REQUEST_MESSAGE);
         String inputValue = Console.readLine();
         int holdingMoney;
         try {
             holdingMoney = HoldingMoneyValidator.getValidHoldingMoney(inputValue);
         } catch (IllegalArgumentException e) {
-            holdingMoney = getInputHoldingMoney();
+            holdingMoney = inputHoldingMoney();
         }
         return holdingMoney;
     }
 
     private void printOutHoldingCoins() {
         System.out.println(ConsoleMessage.HOLDING_MONEY_INFO_MESSAGE);
-        printOutHoldingCoinUnits(CoinInfo.COIN_500_NAME);
-        printOutHoldingCoinUnits(CoinInfo.COIN_100_NAME);
-        printOutHoldingCoinUnits(CoinInfo.COIN_50_NAME);
-        printOutHoldingCoinUnits(CoinInfo.COIN_10_NAME);
+        printOutHoldingCoinUnit(CoinInfo.COIN_500_NAME);
+        printOutHoldingCoinUnit(CoinInfo.COIN_100_NAME);
+        printOutHoldingCoinUnit(CoinInfo.COIN_50_NAME);
+        printOutHoldingCoinUnit(CoinInfo.COIN_10_NAME);
     }
 
-    private void printOutHoldingCoinUnits(String coinUnit) {
+    private void printOutHoldingCoinUnit(String coinUnit) {
         System.out.print(Coin.valueOf(coinUnit).getAmount());
         System.out.print(ConsoleMessage.NUMBER_OF_COIN_UNIT);
         System.out.print(coinCase.getHolingCoinUnits(coinUnit));
