@@ -40,7 +40,19 @@ public class VendingMachine {
     }
 
     private void purchaseProduct() {
+        String productNameToPurchase;
+        try {
+            productNameToPurchase = inputProductNameToPurchase();
+            storage.pullOut(productNameToPurchase, inputAmount);
+        } catch (IllegalArgumentException e) {
+            purchaseProduct();
+            return;
+        }
+        pay(storage.getPrice(productNameToPurchase));
+    }
 
+    private void pay(final int price) {
+        inputAmount -= price;
     }
 
     private int inputInputAmount() {

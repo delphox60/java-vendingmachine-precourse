@@ -2,6 +2,8 @@ package vendingmachine;
 
 import java.util.HashMap;
 
+import constant.ErrorMessage;
+
 public class Storage {
     private HashMap<String, Integer> priceInfo;
     private HashMap<String, Integer> stocks;
@@ -25,7 +27,14 @@ public class Storage {
         return false;
     }
 
-    private int getPrice(final String productName) {
+    public void pullOut(final String productName, final int inputAmount) {
+        if (getPrice(productName) > inputAmount) {
+            System.out.println(ErrorMessage.INPUT_AMOUNT_SHORTAGE);
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public int getPrice(final String productName) {
         return priceInfo.get(productName);
     }
 
