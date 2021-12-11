@@ -17,4 +17,6 @@ public class ErrorMessage {
 
     public static final String INPUT_AMOUNT_NOT_A_VALID_NUMBER = "[ERROR] 투입 금액은 10억 이하의 숫자만 입력할 수 있습니다.";
     public static final String INPUT_AMOUNT_NOT_A_POSITIVE_NUMBER = "[ERROR] 투입 금액은 0 이상이어야 합니다.";
+
+    public static final String IPRODUCT_NAME_TO_PURCHASE_INVALID = "[ERROR] 올바른 상품명을 입력해 주세요.";
 }

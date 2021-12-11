@@ -29,6 +29,11 @@ public class ProductValidator {
         return products;
     }
 
+    public static void validateProductName(final String productName) {
+        GeneralValidator.validateBeingDropped(productName, ErrorMessage.IPRODUCT_NAME_TO_PURCHASE_INVALID);
+        validateProductNameLetters(productName);
+    }
+
     private static Product getValidProduct(final String productInfo) {
         Matcher productFormatMatcher = PRODUCT_FORMAT_PATTERN.matcher(productInfo);
         if (!productFormatMatcher.matches()) {

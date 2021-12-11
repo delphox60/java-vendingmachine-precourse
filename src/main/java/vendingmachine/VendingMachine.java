@@ -25,7 +25,8 @@ public class VendingMachine {
         setInputAmount(inputInputAmount());
         while (storage.checkPurchaseAble(inputAmount)) {
             // TODO purchase product
-
+            printOutInputAmount();
+            purchaseProduct();
         }
     }
 
@@ -36,6 +37,10 @@ public class VendingMachine {
 
     private void setInputAmount(final int inputAmount) {
         this.inputAmount = inputAmount;
+    }
+
+    private void purchaseProduct() {
+
     }
 
     private int inputInputAmount() {
@@ -72,6 +77,17 @@ public class VendingMachine {
             holdingMoney = inputHoldingMoney();
         }
         return holdingMoney;
+    }
+
+    private String inputProductNameToPurchase() {
+        System.out.println(ConsoleMessage.PRODUCT_NAME_TO_PURCHASE_INPUT_REQUEST_MESSAGE);
+        String productNameToPurchase = Console.readLine();
+        try {
+            ProductValidator.validateProductName(productNameToPurchase);
+        } catch (IllegalArgumentException e) {
+            productNameToPurchase = inputProductNameToPurchase();
+        }
+        return productNameToPurchase;
     }
 
     private void printOutHoldingCoins() {
