@@ -23,6 +23,9 @@ public class VendingMachine {
         printOutHoldingCoins();
         initializeProducts();
         setInputAmount(inputInputAmount());
+        while (storage.checkPurchaseAble(inputAmount)) {
+            // TODO purchase product
+        }
     }
 
     private void initializeProducts() {
