@@ -32,7 +32,7 @@ public class ProductValidator {
     private static Product getValidProduct(final String productInfo) {
         Matcher productFormatMatcher = PRODUCT_FORMAT_PATTERN.matcher(productInfo);
         if (!productFormatMatcher.matches()) {
-            System.out.println(ErrorMessage.PRODUCT_FORMAT_ERROR_MESSAGE);
+            System.out.println(ErrorMessage.PRODUCT_INVALID_FORMAT);
             throw new IllegalArgumentException();
         }
         String validProductName = getValidProductName(productFormatMatcher.group(PRODUCT_NAME_GROUP_INDEX));
@@ -42,7 +42,7 @@ public class ProductValidator {
     }
 
     private static String getValidProductName(final String productName) {
-        GeneralValidator.validateBeingDropped(productName, ErrorMessage.DROPPED_INFO_ERROR_MESSAGE);
+        GeneralValidator.validateBeingDropped(productName, ErrorMessage.PRODUCT_DROPPED_INFO);
         validateProductNameLetters(productName);
         return productName;
     }
@@ -50,31 +50,31 @@ public class ProductValidator {
     private static void validateProductNameLetters(final String productName) {
         Matcher productNameMatcher = PRODUCT_NAME_PATTERN.matcher(productName);
         if (!productNameMatcher.matches()) {
-            System.out.println(ErrorMessage.INVALID_PRODUCT_NAME_ERROR_MESSAGE);
+            System.out.println(ErrorMessage.PRODUCT_INVALID_NAME);
             throw new IllegalArgumentException();
         }
     }
 
     private static int getValidProductPrice(final String productPrice) {
-        GeneralValidator.validateBeingDropped(productPrice, ErrorMessage.DROPPED_INFO_ERROR_MESSAGE);
-        int intProductPrice = GeneralValidator.getValidInteger(productPrice, ErrorMessage.NOT_A_VALID_NUMBER_PRICE_ERROR_MESSAGE);
-        GeneralValidator.validateLessThanBillion(intProductPrice, ErrorMessage.NOT_A_VALID_NUMBER_PRICE_ERROR_MESSAGE);
+        GeneralValidator.validateBeingDropped(productPrice, ErrorMessage.PRODUCT_DROPPED_INFO);
+        int intProductPrice = GeneralValidator.getValidInteger(productPrice, ErrorMessage.PRODUCT_NOT_A_VALID_NUMBER_PRICE);
+        GeneralValidator.validateLessThanBillion(intProductPrice, ErrorMessage.PRODUCT_NOT_A_VALID_NUMBER_PRICE);
         validateGreaterThanMinPrice(intProductPrice);
-        GeneralValidator.validateDivisibleByTen(intProductPrice, ErrorMessage.NOT_DIVISIBLE_BY_10_PRICE_ERROR_MESSAGE);
+        GeneralValidator.validateDivisibleByTen(intProductPrice, ErrorMessage.PRODUCT_NOT_DIVISIBLE_BY_10_PRICE);
         return intProductPrice;
     }
 
     private static int getValidProductStock(final String productStock) {
-        GeneralValidator.validateBeingDropped(productStock, ErrorMessage.DROPPED_INFO_ERROR_MESSAGE);
-        int intProductStock = GeneralValidator.getValidInteger(productStock, ErrorMessage.NOT_A_VALID_NUMBER_STOCK_ERROR_MESSAGE);
-        GeneralValidator.validateLessThanBillion(intProductStock, ErrorMessage.NOT_A_VALID_NUMBER_STOCK_ERROR_MESSAGE);
-        GeneralValidator.validateNonNegativeNumber(intProductStock, ErrorMessage.LESS_THAN_0_STOCK_ERROR_MESSAGE);
+        GeneralValidator.validateBeingDropped(productStock, ErrorMessage.PRODUCT_DROPPED_INFO);
+        int intProductStock = GeneralValidator.getValidInteger(productStock, ErrorMessage.PRODUCT_NOT_A_VALID_NUMBER_STOCK);
+        GeneralValidator.validateLessThanBillion(intProductStock, ErrorMessage.PRODUCT_NOT_A_VALID_NUMBER_STOCK);
+        GeneralValidator.validateNonNegativeNumber(intProductStock, ErrorMessage.PRODUCT_LESS_THAN_0_STOCK);
         return intProductStock;
     }
 
     private static void validateGreaterThanMinPrice(final int price) {
         if (price < 100) {
-            System.out.println(ErrorMessage.LESS_THAN_100_PRICE_ERROR_MESSAGE);
+            System.out.println(ErrorMessage.PRODUCT_LESS_THAN_100_PRICE);
             throw new IllegalArgumentException();
         }
     }

@@ -1,17 +1,16 @@
 package validator;
 
-public class InputAmountValidator {
+import constant.ErrorMessage;
 
-    private static final String NOT_A_VALID_NUMBER_ERROR_MESSAGE = "[ERROR] 투입 금액은 10억 이하의 숫자만 입력할 수 있습니다.";
-    private static final String NOT_A_POSITIVE_NUMBER_ERROR_MESSAGE = "[ERROR] 투입 금액은 0 이상이어야 합니다.";
+public class InputAmountValidator {
 
     private InputAmountValidator() {
     }
 
     public static int getValidInputAmount(final String inputValue) {
-        int intInputValue = GeneralValidator.getValidInteger(inputValue, NOT_A_VALID_NUMBER_ERROR_MESSAGE);
-        GeneralValidator.validateLessThanBillion(intInputValue, NOT_A_VALID_NUMBER_ERROR_MESSAGE);
-        GeneralValidator.validateNonNegativeNumber(intInputValue, NOT_A_POSITIVE_NUMBER_ERROR_MESSAGE);
+        int intInputValue = GeneralValidator.getValidInteger(inputValue, ErrorMessage.INPUT_AMOUNT_NOT_A_VALID_NUMBER);
+        GeneralValidator.validateLessThanBillion(intInputValue, ErrorMessage.INPUT_AMOUNT_NOT_A_VALID_NUMBER);
+        GeneralValidator.validateNonNegativeNumber(intInputValue, ErrorMessage.INPUT_AMOUNT_NOT_A_POSITIVE_NUMBER);
         return intInputValue;
     }
 }
