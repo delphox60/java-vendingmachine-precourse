@@ -24,10 +24,11 @@ public class VendingMachine {
         initializeProducts();
         setInputAmount(inputInputAmount());
         while (storage.checkPurchaseAble(inputAmount)) {
-            // TODO purchase product
             printOutInputAmount();
             purchaseProduct();
         }
+        printOutInputAmount();
+        coinCase.returnChange(inputAmount);
     }
 
     private void initializeProducts() {
