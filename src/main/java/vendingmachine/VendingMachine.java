@@ -25,6 +25,7 @@ public class VendingMachine {
         setInputAmount(inputInputAmount());
         while (storage.checkPurchaseAble(inputAmount)) {
             // TODO purchase product
+
         }
     }
 
@@ -83,8 +84,14 @@ public class VendingMachine {
 
     private void printOutHoldingCoinUnit(String coinUnit) {
         System.out.print(Coin.valueOf(coinUnit).getAmount());
-        System.out.print(ConsoleMessage.NUMBER_OF_COIN_UNIT);
+        System.out.print(ConsoleMessage.WON_UNIT + ConsoleMessage.HYPHEN);
         System.out.print(coinCase.getHolingCoinUnits(coinUnit));
         System.out.println(ConsoleMessage.UNIT_NUMBER);
+    }
+
+    private void printOutInputAmount() {
+        System.out.print(ConsoleMessage.INPUT_AMOUNT_INFO_MESSAGE);
+        System.out.print(inputAmount);
+        System.out.println(ConsoleMessage.WON_UNIT);
     }
 }
