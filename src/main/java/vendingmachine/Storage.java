@@ -36,6 +36,11 @@ public class Storage {
             System.out.println(ErrorMessage.PRODUCT_IS_NOT_EXIST);
             throw new IllegalArgumentException();
         }
+        if (isSoldOut(productName)) {
+            System.out.println(ErrorMessage.PRODUCT_IS_SOLD_OUT);
+            throw new IllegalArgumentException();
+        }
+        takeOutOneStock(productName);
     }
 
     public int getPrice(final String productName) {
@@ -51,5 +56,9 @@ public class Storage {
             return true;
         }
         return false;
+    }
+
+    private void takeOutOneStock(final String productName) {
+        stocks.put(productName, stocks.get(productName) - 1);
     }
 }

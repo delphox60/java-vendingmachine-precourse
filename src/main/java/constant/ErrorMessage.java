@@ -21,4 +21,5 @@ public class ErrorMessage {
 
     public static final String PRODUCT_NAME_TO_PURCHASE_INVALID = "[ERROR] 올바른 상품명을 입력해 주세요.";
     public static final String PRODUCT_IS_NOT_EXIST = "[ERROR] 입력하신 상품명과 일치하는 상품이 존재하지 않습니다. 상품명을 다시 한 번 확인하여 주세요.";
+    public static final String PRODUCT_IS_SOLD_OUT = "[ERROR] 현재 해당 상품의 재고가 없습니다. 다른 상품을 선택해 주세요.";
 }
