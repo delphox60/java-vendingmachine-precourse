@@ -30,7 +30,7 @@ public class ProductValidator {
     }
 
     public static void validateProductName(final String productName) {
-        GeneralValidator.validateBeingDropped(productName, ErrorMessage.IPRODUCT_NAME_TO_PURCHASE_INVALID);
+        GeneralValidator.validateBeingDropped(productName, ErrorMessage.PRODUCT_NAME_TO_PURCHASE_INVALID);
         validateProductNameLetters(productName);
     }
 

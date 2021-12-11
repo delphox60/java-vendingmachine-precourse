@@ -19,6 +19,6 @@ public class ErrorMessage {
     public static final String INPUT_AMOUNT_NOT_A_POSITIVE_NUMBER = "[ERROR] 투입 금액은 0 이상이어야 합니다.";
     public static final String INPUT_AMOUNT_SHORTAGE = "[ERROR] 투입 금액이 부족합니다.";
 
-    public static final String IPRODUCT_NAME_TO_PURCHASE_INVALID = "[ERROR] 올바른 상품명을 입력해 주세요.";
-
+    public static final String PRODUCT_NAME_TO_PURCHASE_INVALID = "[ERROR] 올바른 상품명을 입력해 주세요.";
+    public static final String PRODUCT_IS_NOT_EXIST = "[ERROR] 입력하신 상품명과 일치하는 상품이 존재하지 않습니다. 상품명을 다시 한 번 확인하여 주세요.";
 }

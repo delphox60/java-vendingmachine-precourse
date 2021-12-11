@@ -32,10 +32,18 @@ public class Storage {
             System.out.println(ErrorMessage.INPUT_AMOUNT_SHORTAGE);
             throw new IllegalArgumentException();
         }
+        if (isNotExist(productName)) {
+            System.out.println(ErrorMessage.PRODUCT_IS_NOT_EXIST);
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getPrice(final String productName) {
         return priceInfo.get(productName);
+    }
+
+    private boolean isNotExist(final String productName) {
+        return priceInfo.get(productName) == null;
     }
 
     private boolean isSoldOut(final String productName) {
