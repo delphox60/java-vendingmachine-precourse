@@ -6,11 +6,13 @@ import camp.nextstep.edu.missionutils.Console;
 import constant.CoinInfo;
 import constant.ConsoleMessage;
 import validator.HoldingMoneyValidator;
+import validator.InputAmountValidator;
 import validator.ProductValidator;
 
 public class VendingMachine {
     private CoinCase coinCase;
     private Storage storage;
+    private int inputAmount;
 
     public VendingMachine() {
         coinCase = new CoinCase(inputHoldingMoney());
@@ -20,11 +22,28 @@ public class VendingMachine {
     public void execute() {
         printOutHoldingCoins();
         initializeProducts();
+        setInputAmount(inputInputAmount());
     }
 
     private void initializeProducts() {
         List<Product> productList = inputProductList();
         productList.forEach(product -> storage.putProduct(product));
+    }
+
+    private void setInputAmount(final int inputAmount) {
+        this.inputAmount = inputAmount;
+    }
+
+    private int inputInputAmount() {
+        System.out.println(ConsoleMessage.INPUT_AMOUNT_INPUT_REQUEST_MESSAGE);
+        String inputInputAmount = Console.readLine();
+        int intInputInputAmount;
+        try {
+            intInputInputAmount = InputAmountValidator.getValidInputAmount(inputInputAmount);
+        } catch (IllegalArgumentException e) {
+            intInputInputAmount = inputInputAmount();
+        }
+        return intInputInputAmount;
     }
 
     private List<Product> inputProductList() {
