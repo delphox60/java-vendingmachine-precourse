@@ -2,11 +2,9 @@ package validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import constant.ErrorMessage;
@@ -59,7 +57,8 @@ public class ProductValidator {
 
     private static int getValidProductPrice(final String productPrice) {
         GeneralValidator.validateBeingDropped(productPrice, ErrorMessage.DROPPED_INFO_ERROR_MESSAGE);
-        int intProductPrice = GeneralValidator.getValidInteger(productPrice, ErrorMessage.NOT_A_NUMBER_PRICE_ERROR_MESSAGE);
+        int intProductPrice = GeneralValidator.getValidInteger(productPrice, ErrorMessage.NOT_A_VALID_NUMBER_PRICE_ERROR_MESSAGE);
+        GeneralValidator.validateLessThanBillion(intProductPrice, ErrorMessage.NOT_A_VALID_NUMBER_PRICE_ERROR_MESSAGE);
         validateGreaterThanMinPrice(intProductPrice);
         GeneralValidator.validateDivisibleByTen(intProductPrice, ErrorMessage.NOT_DIVISIBLE_BY_10_PRICE_ERROR_MESSAGE);
         return intProductPrice;
@@ -67,7 +66,8 @@ public class ProductValidator {
 
     private static int getValidProductStock(final String productStock) {
         GeneralValidator.validateBeingDropped(productStock, ErrorMessage.DROPPED_INFO_ERROR_MESSAGE);
-        int intProductStock = GeneralValidator.getValidInteger(productStock, ErrorMessage.NOT_A_NUMBER_STOCK_ERROR_MESSAGE);
+        int intProductStock = GeneralValidator.getValidInteger(productStock, ErrorMessage.NOT_A_VALID_NUMBER_STOCK_ERROR_MESSAGE);
+        GeneralValidator.validateLessThanBillion(intProductStock, ErrorMessage.NOT_A_VALID_NUMBER_STOCK_ERROR_MESSAGE);
         GeneralValidator.validateNonNegativeNumber(intProductStock, ErrorMessage.LESS_THAN_0_STOCK_ERROR_MESSAGE);
         return intProductStock;
     }
